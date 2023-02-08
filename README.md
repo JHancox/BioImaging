@@ -24,13 +24,13 @@ https://drive.google.com/file/d/1ILpogNHhWjraYAZMalAx11MXy5D8h7W7/view?usp=shari
 
 `cd docker_build`
 
-`docker build -t wsi_demo:v1 .`
+`docker build -f Docker_Build -t dli/gtc23:v1 .`
  
 You can then run the container that this builds after returning to the root folder:
 
 `cd ..`
 
-`docker run –gpus all –rm -it –ipc=host -p 8808:8888 -v [absolute path to current folder]:notebooks wsi_demo:v1`
+`docker run –gpus all –rm -it –ipc=host -p 8808:8888 -v [absolute path to current folder]:notebooks dli/gtc23:v1`
 
 The host folder should appear as 'notebooks' in the container, which means you can load and save things easily from the container.
 create a symlink: 
