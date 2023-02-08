@@ -1,0 +1,10 @@
+FROM rapidsai/rapidsai-core:22.12-cuda11.5-runtime-ubuntu20.04-py3.9
+RUN conda update -n base -c defaults conda \
+  && source activate rapids \
+  && conda install -c conda-forge dask-image \
+  && apt-get update \
+  && apt-get -y install gcc \
+  && pip install torch==1.13.1+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html \
+  && pip install 'monai[skimage, openslide, pillow, ignite, cucim, tiffflie]' \
+  && conda install python-graphviz
+
