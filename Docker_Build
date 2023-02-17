@@ -5,6 +5,7 @@ RUN conda update -n base -c defaults conda \
   && apt-get update \
   && apt-get -y install gcc \
   && pip install torch==1.13.1+cu116 -f https://download.pytorch.org/whl/cu116/torch_stable.html \
-  && pip install 'monai[skimage, openslide, pillow, ignite, cucim, tiffflie]' \
+  && pip install 'monai[skimage, openslide, pillow, ignite, cucim, tifffile, nibabel]' \
+  && pip install zarr \
   && conda install python-graphviz
 
