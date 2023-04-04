@@ -1,12 +1,14 @@
-def render_graph(nucleus_type=1, distance_threshold=20):
+def render_graph(nucleus_type=4, distance_threshold=20):
 
+    colors = ["blue", "gold", "lawngreen", "red"]
+    
     if nucleus_type > len(colors) or nucleus_type <1 :
         print("Nucleus Type needs to be >0 and <=4")
         return
         
-    colors = ["blue", "gold", "lawngreen", "red"]
-    color = colors[t-1]
-    print(color)
+    
+    color = colors[nucleus_type-1]
+
     cdf_x = cdf.loc[cdf["type"]==nucleus_type]
     cdf_x = cdf_x.reset_index()
     cdf_x["index"] = cdf_x.index
@@ -59,7 +61,9 @@ def render_graph(nucleus_type=1, distance_threshold=20):
                                               )
 
 
-    d = cux_dfx.dashboard([chartx], layout=cuxfilter.layouts.double_feature)
+    cux_dfx.dashboard([chartx], layout=cuxfilter.layouts.double_feature)
 
-    # draw the graph
-    chartx.view()
+    return chartx
+    
+chartx = render_graph()
+chartx.view()
